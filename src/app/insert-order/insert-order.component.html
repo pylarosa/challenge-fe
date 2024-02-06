@@ -1,0 +1,108 @@
+<!-- order-form.component.html -->
+<div class="container col-md-20">
+    <div class="mb-4" style="margin-top: 10px; color: 00205b;">
+        <h2 class="text-center">Recapito Cliente</h2>
+    </div>
+    <form (ngSubmit)="submitForm()" #orderForm="ngForm">
+        <div class="row justify-content-center">
+            <div class="form-group, col-md-4">
+                <label for="street">Indirizzo di Consegna</label>
+                <input type="text" id="street" name="street" [(ngModel)]="order.address.street" class="form-control"
+                    [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #street="ngModel">
+                <div *ngIf="formSubmitted && street.invalid" class="text-danger">
+                    <div *ngIf="street.errors" style="font-size: small;">
+                        <div *ngIf="street.errors['required']">Dato Obbligatorio.</div>
+                        <div *ngIf="street.errors['notEmptyString']">Dato non valido</div>
+                        <div *ngIf="street.errors['notComplete']">Dato non valido</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group, col-md-2">
+                <label for="city">Città</label>
+                <input type="text" id="city" name="city" [(ngModel)]="order.address.city" class="form-control"
+                    [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #city="ngModel">
+                <div *ngIf="formSubmitted && city.invalid" class="text-danger">
+                    <div *ngIf="city.errors" style="font-size: small;">
+                        <div *ngIf="city.errors['required']">Dato Obbligatorio.</div>
+                        <div *ngIf="city.errors['notEmptyString']">Dato non valido</div>
+                        <div *ngIf="city.errors['notComplete']">Dato non valido</div>
+                        <div *ngIf="city.errors['notCorrect']">Dato non valido</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group, col-md-2">
+                <label for="cap">CAP</label>
+                <input type="text" id="cap" name="cap" [(ngModel)]="order.address.cap" class="form-control"
+                    [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="capType" #cap="ngModel">
+                <div *ngIf="formSubmitted && cap.invalid" class="text-danger">
+                    <div *ngIf="cap.errors" style="font-size: small;">
+                        <div *ngIf="cap.errors['required']">Dato Obbligatorio.</div>
+                        <div *ngIf="!cap.errors['capCheck']">CAP errato</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group, col-md-2">
+                <label for="province">Provincia</label>
+                <input type="text" id="province" name="province" [(ngModel)]="order.address.province"
+                    class="form-control" [ngModelOptions]="{ updateOn: 'blur' }" required
+                    validatorDirective="stringType" #province="ngModel">
+                <div *ngIf="formSubmitted && province.invalid" class="text-danger">
+                    <div *ngIf="province.errors" style="font-size: small;">
+                        <div *ngIf="province.errors['required']">Dato Obbligatorio.</div>
+                        <div *ngIf="province.errors['notEmptyString']">Dato non valido</div>
+                        <div *ngIf="province.errors['notComplete']">Dato non valido</div>
+                        <div *ngIf="province.errors['notCorrect']">Dato non valido</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group, col-md-2">
+                <label for="country">Nazione</label>
+                <input type="text" id="country" name="country" [(ngModel)]="order.address.country" class="form-control"
+                    [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #country="ngModel">
+                <div *ngIf="formSubmitted && country.invalid" class="text-danger">
+                    <div *ngIf="country.errors" style="font-size: small;">
+                        <div *ngIf="country.errors['required']">Dato Obbligatorio.</div>
+                        <div *ngIf="country.errors['notEmptyString']">Dato non valido</div>
+                        <div *ngIf="country.errors['notComplete']">Dato non valido</div>
+                        <div *ngIf="country.errors['notCorrect']">Dato non valido</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="form-group, col-md-6">
+                <label for="info">Altre Informazioni</label>
+                <input type="text" id="info" name="info" [(ngModel)]="order.address.additionalInfo"
+                    class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="customer">Cliente</label>
+                <input type="text" id="customer" name="customer" [(ngModel)]="order.customer" class="form-control"
+                    [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType"
+                    #customer="ngModel">
+                <div *ngIf="formSubmitted && customer.invalid" class="text-danger">
+                    <div *ngIf="customer.errors" style="font-size: small;">
+                        <div *ngIf="customer.errors['required']">Dato Obbligatorio.</div>
+                        <div *ngIf="customer.errors['notEmptyString']">Dato non valido</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr style="color: #00205b; opacity: 100;">
+        <div class="mb-4" style="margin-top: 20px; color: 00205b;">
+            <h2 class="text-center">Scelta Prodotti</h2>
+        </div>
+        <div class="row">
+            <div>
+                <div class="form-group">
+                    <app-product-selection></app-product-selection>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width: 15%; margin-left: 20%;">
+            <button class="btn btn-secondary" (onClick)="submitForm()"> Invia Ordine </button>
+        </div>
+
+    </form>
+</div>

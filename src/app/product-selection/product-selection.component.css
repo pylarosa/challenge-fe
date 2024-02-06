@@ -1,0 +1,20 @@
+.is-invalid {
+    border: 1px solid red;
+    /* Example: add a red border for invalid input */
+}
+
+.custom-select {
+    min-width: 40px;
+  }
+  
+  select {
+    /* other styles for aesthetics */
+    width: 30%;
+    font-size: 13px;
+    /* padding: 0.675em 6em 0.675em 1em; */
+    background-color: #fff;
+    border: 1px solid #00205b;
+    border-radius: 0.25rem;
+    color: #00205b;
+    cursor: pointer
+   }

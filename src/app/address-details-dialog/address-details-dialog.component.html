@@ -1,0 +1,36 @@
+<div class="container col-md-20">
+    <div class="modal-header">
+        <h4 class="modal-title">Address Details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div>
+        <dl class="row">
+            <dt class="col-md-6">Indirizzo di Consegna:</dt>
+            <dd class="col-md-6">{{ address?.street }}</dd>
+
+            <dt class="col-md-6">Citta:</dt>
+            <dd class="col-md-6">{{ address?.city }}</dd>
+
+            <dt class="col-md-6">Provincia:</dt>
+            <dd class="col-md-6">{{ address?.province }}</dd>
+
+            <dt class="col-md-6">CAP:</dt>
+            <dd class="col-md-6">{{ address?.cap }}</dd>
+
+            <dt class="col-md-6">Nazione:</dt>
+            <dd class="col-md-6">{{ address?.country }}</dd>
+
+            <dt class="col-md-6">Altre Informazioni:</dt>
+            <dd class="col-md-6">{{ address?.additionalInfo }}</dd>
+
+            <dt class="col-md-6">Coordinates:</dt>
+            <dd class="col-md-6">{{ address?.coordinates?.latitude }} N - {{address?.coordinates?.longitude}} E</dd>
+
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+    </div>
+</div>

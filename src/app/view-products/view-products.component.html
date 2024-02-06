@@ -1,0 +1,25 @@
+
+<div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nome Prodotto</th>
+          <th scope="col">Quantita</th>
+          <th scope="col">Prezzo Unitario</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <td>{{ product.name }}</td>
+          <td>{{ product.quantity }}</td> 
+          <td>{{ product.price}} €</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><strong>Totale:</strong></td>
+          <td><strong>{{ originalOrder.total }} €</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>

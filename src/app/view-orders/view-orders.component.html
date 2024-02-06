@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="mb-4" style="margin-top: 20px; color: 00205b;">
+    <h2 class="text-center">Elenco delle spese</h2>
+  </div>
+  <table *ngIf="!noOrder" class="table table-hover text-center justify-content-center ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Codice Ordine</th>
+        <th scope="col">Stato</th>
+        <th scope="col">Data Ordine</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Modificato</th>
+        <th scope="col">Data Modifica</th>
+        <th scope="col">Indirizzo di Consegna</th>
+        <th scope="col">Prodotti</th>
+        <th scope="col">Modifica</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ order.orderId }}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ order.orderDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+        <td>{{ order.customer }}</td>
+        <td>{{ order.updated ? 'Yes' : 'No' }}</td>
+        <td>{{ order.updateDate ? (order.updateDate | date: 'dd/MM/yyyy HH:mm:ss') : "Non modificato" }}</td>
+        <td>
+          <button type="button" class="btn btn-secondary btn-sm"
+            (click)="openAddressDetailsModal(this.order.address)">Visualizza</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-secondary btn-sm" (click)="openProductList(this.order)">Elenco</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary btn-sm"
+            (click)="uopenUpdateOrderDialog(this.order)">Modifica</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="d-flex justify-content-center">
+  <div *ngIf="noOrder" class="alert alert-warning" role="alert">
+    <strong class="text-center" >Nessuna spesa effettuata!</strong>
+    <button class="btn" style="margin-left: 50px; border-color: #00205b;" routerLink="/insert-order" routerLinkActive="active">Fai la spesa </button>
+  </div>
+</div>
+
+
+
+<app-filter-orders></app-filter-orders>
