@@ -2,8 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { OrderDTO, Status } from '../dto/order';
 import { OrderService } from '../service/order.service';
 import { ProductService } from '../service/product.service';
-import { ValidatorFn, AbstractControl, NgForm } from '@angular/forms';
-import { AppRoutingModule } from '../app-routing.module';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -49,7 +48,6 @@ export class InsertOrderComponent {
           this.router.navigate(['/orders']);
         },
         (error) => {
-          // Handle errors if needed
           console.error('Error:', error);
         }
       )

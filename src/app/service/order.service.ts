@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { OrderDTO, OrderFilterDTO, OrderPatchDTO, Status } from '../dto/order';
 import { Injectable, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ export class OrderService implements OnInit {
   urlOrderList = '/orders/getOrders'
   urlInsertOrder = '/orders/insertOrder'
   urlFilterOrder = '/orders/get-filtered-orders'
-  urlEditOrder = '/orders/update-order/'
+  urlEditOrder = '/orders/update-order'
 
   private orderUpdatedSource = new Subject<void>();
 
@@ -40,12 +39,12 @@ export class OrderService implements OnInit {
   }
 
   mapOrderStatusFromServer(statusString: string): Status {
-    // Implement a mapping logic here based on your server values
     switch (statusString) {
       case 'PRESO_IN_CARICO': return Status.PRESO_IN_CARICO;
-      case 'PARTITO': return Status.PARTITO;
-      // Add more cases for other status values
-      default: return Status.PRESO_IN_CARICO; // Default to a sensible value
+      case 'IN CONSEGNA': return Status.IN_CONSEGNA;
+      case 'CONSEGNATO': return Status.CONSEGNATO;
+      
+      default: return Status.PRESO_IN_CARICO; 
     }
   }
 
@@ -55,22 +54,18 @@ export class OrderService implements OnInit {
 
   }
 
+  // Based on the depot coordinates (statically set in this instance to avoid another server call),
+  // this function generates random coordinates in a 20Km radius from Depot by randomly choose 
+  // angles for lat and long whitin the specified range
   randomCoordinates(): { latitude: number; longitude: number } {
-    // Florence coordinates
-    const florenceLatitude = 43.7696;
-    const florenceLongitude = 11.2558;
-
-    // Define the radius in kilometers (e.g., 20km)
-    const radiusKm = 50;
-
-    // Convert the radius to degrees - via earth circ.
+    const depotLatitude = 43.80873;
+    const depotLongitude = 11.175819;
+    const radiusKm = 20;
+    // Convert the radius to degrees - via the earth circ.
     const radiusInDegrees = radiusKm / 111.32;
+    const randomLatitude = depotLatitude + (Math.random() * 2 - 1) * radiusInDegrees;
+    const randomLongitude = depotLongitude + (Math.random() * 2 - 1) * radiusInDegrees;
 
-    // Generate random angles for latitude and longitude within the specified range
-    const randomLatitude = florenceLatitude + (Math.random() * 2 - 1) * radiusInDegrees;
-    const randomLongitude = florenceLongitude + (Math.random() * 2 - 1) * radiusInDegrees;
-
-    // Return the random coordinates
     return { latitude: Number(randomLatitude.toFixed(5)), longitude: Number(randomLongitude.toFixed(5)) };
   }
 }

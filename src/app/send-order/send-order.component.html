@@ -1,0 +1,18 @@
+<app-view-orders [isSendOrder]="true" [orders]="orders"
+    (coordinateList)="handleSelectedCoordinates($event)"></app-view-orders>
+
+
+
+<div class="container">
+    <div class="row">
+        <div style="margin-top: 5px;">
+            <button (click)="calculatePath()"[disabled]="noCheckBoxSelected"  class="btn btn-primary"> Calcola Percorso Migliore di Spedizione </button>
+        </div>
+    </div>
+    <h2 class="text-left" *ngIf="pathCalculated" >Percorso Migliore </h2>
+    <ul>
+        <li *ngFor="let p of orderedPoints; let i = index">
+            {{ i + 1 }}° - {{p.id}} - {{p.latitude}} - {{p.longitude}}
+        </li>
+    </ul>
+</div>

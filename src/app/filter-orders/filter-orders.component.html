@@ -26,55 +26,56 @@
     <div class="row">
         <div class="col">
             <label>Data Inizio</label>
-            <input [(ngModel)]="orderFilter.dateBy" [ngModelOptions]="{standalone: true}" class="form-control" type="date"
-                id="dateStandard" name="dateStandard" [value]="getDefaultDate()">
+            <input [(ngModel)]="orderFilter.dateBy" [ngModelOptions]="{standalone: true}" class="form-control"
+                type="date" id="dateStandard" name="dateStandard" [value]="getDefaultDate()">
         </div>
         <div class="col-md-6">
             <label>Data Fine</label>
-            <input [(ngModel)]="orderFilter.dateTo" [ngModelOptions]="{standalone: true}" class="form-control" type="date"
-                id="dateStandard" name="dateStandard">
+            <input [(ngModel)]="orderFilter.dateTo" [ngModelOptions]="{standalone: true}" class="form-control"
+                type="date" id="dateStandard" name="dateStandard">
         </div>
     </div><br>
     <button type="button" (click)="getAllOrders()" class="btn btn-primary">Search</button>
 </form>
 <div class="container">
     <h5 class="d-flex justify-content-center align-items-center" *ngIf="orders.length == 0">Nessun Risultato</h5>
-    <table  *ngIf="orders.length != 0" class="table table-hover text-center justify-content-center ">
+    <table *ngIf="orders.length != 0" class="table table-hover text-center justify-content-center ">
         <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Codice Ordine</th>
-            <th scope="col">Stato</th>
-            <th scope="col">Data Ordine</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Modificato</th>
-            <th scope="col">Data Modifica</th>
-            <th scope="col">Indirizzo di Consegna</th>
-            <th scope="col">Prodotti</th>
-            <th scope="col">Modifica</th>
-          </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Codice Ordine</th>
+                <th scope="col">Stato</th>
+                <th scope="col">Data Ordine</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Modificato</th>
+                <th scope="col">Data Modifica</th>
+                <th scope="col">Indirizzo di Consegna</th>
+                <th scope="col">Prodotti</th>
+                <th scope="col">Modifica</th>
+            </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let order of orders; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ order.orderId }}</td>
-            <td>{{ order.status }}</td>
-            <td>{{ order.orderDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
-            <td>{{ order.customer }}</td>
-            <td>{{ order.updated ? 'Yes' : 'No' }}</td>
-            <td>{{ order.updateDate ? (order.updateDate | date: 'dd/MM/yyyy HH:mm:ss') : "Non modificato" }}</td>
-            <td>
-              <button type="button" class="btn btn-secondary btn-sm"
-                (click)="openAddressDetailsModal(this.order.address)">Visualizza</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-secondary btn-sm" (click)="openProductList(this.order)">Elenco</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-primary btn-sm"
-                (click)="uopenUpdateOrderDialog(this.order)">Modifica</button>
-            </td>
-          </tr>
+            <tr *ngFor="let order of orders; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ order.orderId }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.orderDate | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                <td>{{ order.customer }}</td>
+                <td>{{ order.updated ? 'Yes' : 'No' }}</td>
+                <td>{{ order.updateDate ? (order.updateDate | date: 'dd/MM/yyyy HH:mm:ss') : "Non modificato" }}</td>
+                <td>
+                    <button type="button" class="btn btn-secondary btn-sm"
+                        (click)="openAddressDetailsModal(this.order.address)">Visualizza</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary btn-sm"
+                        (click)="openProductList(this.order)">Elenco</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm"
+                        (click)="uopenUpdateOrderDialog(this.order)">Modifica</button>
+                </td>
+            </tr>
         </tbody>
-      </table>
+    </table>
 </div>

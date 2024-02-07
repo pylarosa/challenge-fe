@@ -31,7 +31,7 @@ export class FilterOrdersComponent {
     this.orderService.filterOrders(this.orderFilter).subscribe((orders: OrderDTO[]) => {
       // Map status for each order
       orders.forEach(order => {
-        order.status = this.orderService.mapOrderStatusFromServer(order.status.toLocaleString());
+        order.status = this.orderService.mapOrderStatusFromServer(order.status!.toLocaleString());
       });
       this.orders = orders;
     });
@@ -55,9 +55,7 @@ export class FilterOrdersComponent {
 
   getDefaultDate(): string {
     const currentDate = new Date();
-    // Set the time to 00:00:00
     currentDate.setHours(0, 0, 0, 0);
-    // Format the date to match the datetime-local input format (yyyy-MM-ddTHH:mm:ss)
     return currentDate.toISOString().slice(0, 16) + ":00"; // Append ":00" for seconds
   }
 }

@@ -25,6 +25,7 @@ export class ProductService {
   }
 
   getTotal(): number {
+    this.totalOrderPrice = 0;
     this.selectedProducts.forEach(product => {
      this.totalOrderPrice += product.price * (product.quantity || 0);
     });

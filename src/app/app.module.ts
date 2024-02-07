@@ -14,6 +14,7 @@ import { UpdateOrderComponent } from './update-order/update-order.component';
 import { ViewProductsComponent } from './view-products/view-products.component';
 import { FilterOrdersComponent } from './filter-orders/filter-orders.component';
 import { ValidatorDirective } from './not-empty-string-validator.directive';
+import { SendOrderComponent } from './send-order/send-order.component';
 
 
 
@@ -28,7 +29,8 @@ import { ValidatorDirective } from './not-empty-string-validator.directive';
     UpdateOrderComponent,
     ViewProductsComponent,
     FilterOrdersComponent,
-    ValidatorDirective
+    ValidatorDirective,
+    SendOrderComponent
   ],
   imports: [
     BrowserModule,

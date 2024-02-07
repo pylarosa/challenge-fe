@@ -4,7 +4,7 @@ import { ProductDTO } from "./product";
 export class OrderDTO {
     orderId: string = "";
     productsDto: ProductDTO[] = new Array;
-    status: Status =  Status.PRESO_IN_CARICO;
+    status: Status | undefined;
     orderDate: Date = new Date();
     updateDate: string = "";
     address: Address = new Address();
@@ -17,6 +17,7 @@ export class OrderPatchDTO {
     orderId?: string;
     address?: Address;
     updated?: boolean;
+    status?: Status;
 }
 
 export class OrderFilterDTO {
@@ -29,7 +30,6 @@ export class OrderFilterDTO {
 
 export enum Status {
     PRESO_IN_CARICO = "PRESO IN CARICO",
-    PARTITO = "PARTITO",
     IN_CONSEGNA = "IN CONSEGNA",
     CONSEGNATO = "CONSEGNATO",
     DESTINATARIO_NON_TROVATO = "DESTINATARIO NON TROVATO",

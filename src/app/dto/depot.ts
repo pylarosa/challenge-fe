@@ -1,7 +1,7 @@
 import { Address } from "./address";
 
-export interface DepotDTO {
-    depotId: string;
-    name: string;
-    address: Address;
+export class DepotDTO {
+    depotId?: string;
+    name?: string;
+    address: Address = new Address;
 }

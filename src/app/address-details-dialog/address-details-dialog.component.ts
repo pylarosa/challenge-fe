@@ -16,6 +16,6 @@ export class AddressDetailsDialogComponent implements OnInit {
   }
 
   closeModal(): void {
-    this.activeModal.dismissAll();  // Use dismissAll to close all modals
+    this.activeModal.dismissAll();
   }
 }

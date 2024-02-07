@@ -1,4 +1,3 @@
-<!-- update-order-dialog.component.html -->
 <div class="modal-header">
     <h4 class="modal-title">Modifica Recapito Spesa</h4>
     <button type="button" class="close" aria-label="Close" (click)="closeModal()">
@@ -7,73 +6,73 @@
 </div>
 
 <form (ngSubmit)="submitForm()" #orderForm="ngForm">
-<div class="modal-body">
-    <label for="street">Indirizzo di Consegna</label>
-    <input type="text" id="street" name="street" [(ngModel)]="patchOrder.address!.street" class="form-control"
-        [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #street="ngModel">
-    <div *ngIf="formSubmitted && street.invalid" class="text-danger">
-        <div *ngIf="street.errors" style="font-size: small;">
-            <div *ngIf="street.errors['required']">Dato Obbligatorio.</div>
-            <div *ngIf="street.errors['notEmptyString']">Dato non valido</div>
-            <div *ngIf="street.errors['notComplete']">Dato non valido</div>
+    <div class="modal-body">
+        <label for="street">Indirizzo di Consegna</label>
+        <input type="text" id="street" name="street" [(ngModel)]="patchOrder.address!.street" class="form-control"
+            [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #street="ngModel">
+        <div *ngIf="formSubmitted && street.invalid" class="text-danger">
+            <div *ngIf="street.errors" style="font-size: small;">
+                <div *ngIf="street.errors['required']">Dato Obbligatorio.</div>
+                <div *ngIf="street.errors['notEmptyString']">Dato non valido</div>
+                <div *ngIf="street.errors['notComplete']">Dato non valido</div>
+            </div>
         </div>
-    </div>
-    <label for="city">Città</label>
-    <input type="text" id="city" name="city" [(ngModel)]="patchOrder.address!.city" class="form-control"
-        [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #city="ngModel">
-    <div *ngIf="formSubmitted && city.invalid" class="text-danger">
-        <div *ngIf="city.errors" style="font-size: small;">
-            <div *ngIf="city.errors['required']">Dato Obbligatorio.</div>
-            <div *ngIf="city.errors['notEmptyString']">Dato non valido</div>
-            <div *ngIf="city.errors['notComplete']">Dato non valido</div>
-            <div *ngIf="city.errors['notCorrect']">Dato non valido</div>
+        <label for="city">Città</label>
+        <input type="text" id="city" name="city" [(ngModel)]="patchOrder.address!.city" class="form-control"
+            [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #city="ngModel">
+        <div *ngIf="formSubmitted && city.invalid" class="text-danger">
+            <div *ngIf="city.errors" style="font-size: small;">
+                <div *ngIf="city.errors['required']">Dato Obbligatorio.</div>
+                <div *ngIf="city.errors['notEmptyString']">Dato non valido</div>
+                <div *ngIf="city.errors['notComplete']">Dato non valido</div>
+                <div *ngIf="city.errors['notCorrect']">Dato non valido</div>
+            </div>
         </div>
-    </div>
 
-    <label for="cap">CAP</label>
-    <input type="text" id="cap" name="cap" [(ngModel)]="patchOrder.address!.cap" class="form-control"
-        [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="capType" #cap="ngModel">
-    <div *ngIf="formSubmitted && cap.invalid" class="text-danger">
-        <div *ngIf="cap.errors" style="font-size: small;">
-            <div *ngIf="cap.errors['required']">Dato Obbligatorio.</div>
-            <div *ngIf="!cap.errors['capCheck']">CAP errato</div>
+        <label for="cap">CAP</label>
+        <input type="text" id="cap" name="cap" [(ngModel)]="patchOrder.address!.cap" class="form-control"
+            [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="capType" #cap="ngModel">
+        <div *ngIf="formSubmitted && cap.invalid" class="text-danger">
+            <div *ngIf="cap.errors" style="font-size: small;">
+                <div *ngIf="cap.errors['required']">Dato Obbligatorio.</div>
+                <div *ngIf="!cap.errors['capCheck']">CAP errato</div>
+            </div>
         </div>
-    </div>
 
-    <label for="province">Provincia</label>
-    <input type="text" id="province" name="province" [(ngModel)]="patchOrder.address!.province" class="form-control"
-        [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #province="ngModel">
-    <div *ngIf="formSubmitted && province.invalid" class="text-danger">
-        <div *ngIf="province.errors" style="font-size: small;">
-            <div *ngIf="province.errors['required']">Dato Obbligatorio.</div>
-            <div *ngIf="province.errors['notEmptyString']">Dato non valido</div>
-            <div *ngIf="province.errors['notComplete']">Dato non valido</div>
-            <div *ngIf="province.errors['notCorrect']">Dato non valido</div>
+        <label for="province">Provincia</label>
+        <input type="text" id="province" name="province" [(ngModel)]="patchOrder.address!.province" class="form-control"
+            [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #province="ngModel">
+        <div *ngIf="formSubmitted && province.invalid" class="text-danger">
+            <div *ngIf="province.errors" style="font-size: small;">
+                <div *ngIf="province.errors['required']">Dato Obbligatorio.</div>
+                <div *ngIf="province.errors['notEmptyString']">Dato non valido</div>
+                <div *ngIf="province.errors['notComplete']">Dato non valido</div>
+                <div *ngIf="province.errors['notCorrect']">Dato non valido</div>
 
+            </div>
         </div>
-    </div>
-    <label for="country">Nazione</label>
-    <input type="text" id="country" name="country" [(ngModel)]="patchOrder.address!.country" class="form-control"
-        [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #country="ngModel">
-    <div *ngIf="formSubmitted && country.invalid" class="text-danger">
-        <div *ngIf="country.errors" style="font-size: small;">
-            <div *ngIf="country.errors['required']">Dato Obbligatorio.</div>
-            <div *ngIf="country.errors['notEmptyString']">Dato non valido</div>
-            <div *ngIf="country.errors['notComplete']">Dato non valido</div>
-            <div *ngIf="country.errors['notCorrect']">Dato non valido</div>
+        <label for="country">Nazione</label>
+        <input type="text" id="country" name="country" [(ngModel)]="patchOrder.address!.country" class="form-control"
+            [ngModelOptions]="{ updateOn: 'blur' }" required validatorDirective="stringType" #country="ngModel">
+        <div *ngIf="formSubmitted && country.invalid" class="text-danger">
+            <div *ngIf="country.errors" style="font-size: small;">
+                <div *ngIf="country.errors['required']">Dato Obbligatorio.</div>
+                <div *ngIf="country.errors['notEmptyString']">Dato non valido</div>
+                <div *ngIf="country.errors['notComplete']">Dato non valido</div>
+                <div *ngIf="country.errors['notCorrect']">Dato non valido</div>
+            </div>
         </div>
+
+        <label>Altre Informazioni di consegna</label>
+        <input type="text" class="form-control" type="text" id="info" name="info"
+            [(ngModel)]="patchOrder.address!.additionalInfo" />
+
+        <button *ngIf="!changed" type="button" class="btn btn-primary" (click)="newCoordinates()">Calcola nuove
+            coordinate</button>
+        <pre
+            *ngIf="showCoord"> {{patchOrder.address?.coordinates?.latitude}} - {{patchOrder.address?.coordinates?.longitude}} </pre>
+
     </div>
-
-    <label>Altre Informazioni di consegna</label>
-    <input type="text" class="form-control" type="text" id="info" name="info"
-        [(ngModel)]="patchOrder.address!.additionalInfo" />
-
-    <button *ngIf="!changed" type="button" class="btn btn-primary" (click)="newCoordinates()">Calcola nuove
-        coordinate</button>
-    <pre
-        *ngIf="showCoord"> {{patchOrder.address?.coordinates?.latitude}} - {{patchOrder.address?.coordinates?.longitude}} </pre>
-
-</div>
 </form>
 <div class="modal-footer">
     <button type="button" class="btn btn-primary" (click)="submitForm()">Update Order</button>

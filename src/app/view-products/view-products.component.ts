@@ -17,7 +17,7 @@ export class ViewProductsComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private productService: ProductService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -27,7 +27,7 @@ export class ViewProductsComponent implements OnInit {
     const orderId = this.originalOrder.orderId;
     this.productService.getProductByOrder(orderId).subscribe(
       (response) => {
-        this.products = response; // Assign the response to products
+        this.products = response;
         console.log('Update successful:', response);
       },
       (error) => {
@@ -35,7 +35,7 @@ export class ViewProductsComponent implements OnInit {
       }
     );
   }
-    
+
   closeModal(): void {
     this.modalService.dismissAll();
   }
